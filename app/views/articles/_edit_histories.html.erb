@@ -1,0 +1,25 @@
+<div id="article-edit-history-modal" class="article-edit-history-modal" style="display: none; ">
+    <div class="panel panel-default modal-panel article-edit-history-panel">
+        <div class="panel-heading modal-heading">Article Edit History: <%= article.title %></div>
+        <div class="panel-body">
+            <div class="col-lg-12 article-edit-history-list">
+                <% article_edit_history = article.article_edit_histories{ |a, b|  b.article_edited_at <=> a.article_edited_at } if article_edit_history != [] %>
+                <% if article_edit_history != [] %>
+                    <div class="modal-panel-content">
+                        <div class="row">
+                            <li class="article-edit-history-well-heading">Edited By&nbsp;&nbsp;
+                                <div class="pull-right">Edited At</div>
+                            </li>
+                            <% article_edit_history.each do |article_edit_history| %>
+                                <li class="article-edit-history-list-item"><%= link_to User.find_by_id(article_edit_history.article_edited_by).user_name, '#' %><div class="pull-right date"><%= article_edit_history.article_edited_at.strftime("%a, %b %d %Y %l:%M %p") %></div></li>   
+                            <% end %>
+                        </div>
+                    </div>
+                <% else %>
+                    <p class = "no-edit-message"> There is no edit history for this article</p>
+                <% end %>        
+                <%= link_to 'Close',  '#close-modal',   :rel => "modal:close", :class => "modal-options article-edit-history-options pull-right" %>
+            </div>
+        </div>
+    </div>
+</div>

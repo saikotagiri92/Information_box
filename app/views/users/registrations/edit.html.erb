@@ -1,0 +1,83 @@
+<% provide(:page_title, 'User Profile') %>
+<style type="text/css">
+body{
+  overflow-y: auto; 
+}
+</style>
+<div class="row" id="profile">
+  <div class="container">
+    <%=render 'users/account_sidebar'%>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+        <div class="col-lg-9" >
+        <div id = "user-profile-form-error-messages"></div>
+        <div class="panel panel-default user-organisation-settings-panel">
+          <div class="panel-heading" style="height:52px">
+            <div class="account-panel-title">Profile Info</div>
+            <%= f.submit 'Save', class: "btn btn-primary btn-sm pull-right account-panel-button"  %>
+          </div>
+          <div class="panel-body">
+              <div class="col-lg-12" >
+                  <div class="form-group">
+                      <div class="account-profile-field">
+                          <div class="account-profile-label"><%= f.label "Name" %></div>
+                          <div class="account-profile-input"><%= f.text_field :name, class: "form-control", :placeholder => "Name", :required => true %></div>
+                          <div class="small description">Write full name- First name followed by surname.</div>
+                      </div>
+                      <div class="account-profile-field">
+                        <div class="account-profile-label"><%= f.label "Email" %></div>
+                        <div class="account-profile-input"><%= f.email_field :email, class: "form-control",:placeholder => "Email Address", :required => true %></div>
+                        <div class="description">
+                          This Email is also your username.
+                          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                            Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+                          <% end %>
+                        </div>
+  
+                      </div>  
+                    </div>
+                    <div class="account-profile-field">
+                      <div class="account-profile-label"><%= f.label "Bio" %></div>
+                      <div class="account-profile-input"><%= f.text_area :bio, class: "form-control user-profile-description-textarea",:placeholder => "Describe Yourself" %></div>
+                      <div class="description">About yourself in 160 characters or Less.</div>
+                  </div>
+                  <div class="account-profile-field">
+                      <div class="account-profile-label"><%= f.label "Title" %></div>
+                      <div class="account-profile-input"><%= f.text_field :designation, class: "form-control", :placeholder => "Title" %></div>
+                      <div class="description">Your job title will make it more easier for people to know you.</div>
+                  </div>
+                  <div class="account-profile-field">
+                      <div class="account-profile-label"><label class="">Linkedin Profile</label></div>
+                      <div class="account-profile-input"><%= f.url_field :linkedin_profile_link , class: "form-control",:placeholder => "Linkedin" %></div>
+                  </div>
+                  <div class="account-profile-field">
+                      <div class="account-profile-label"><label class="">Facebook Profile</label></div>
+                        <div class="account-profile-input"><%= f.url_field :facebook_profile_link, class: "form-control", :placeholder => "Facebook" %></div>
+                      </div>
+                      <div class="account-profile-field">
+                          <div class="account-profile-label"><label class="">Twitter Profile</label></div>
+                          <div class=""><%= f.url_field :twitter_profile_link, class: "form-control", :placeholder => "Twitter" %></div>
+                      </div>
+
+                      <div class="account-profile-field">
+                          <div class="account-profile-label"><label class="">Password</label></div>
+                          <div class=""><%= f.password_field :password, autocomplete: "off", class: "form-control", :placeholder => "Password (leave blank if you don't want to change it)" %></div>
+                      </div>
+
+                      <div class="account-profile-field">
+                          <div class="account-profile-label"><label class="">Password confirmation</label></div>
+                          <div class=""><%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", :placeholder => "Password confirmation" %></div>
+                      </div>
+
+                      <div class="account-profile-field">
+                          <div class="account-profile-label"><label class="">Current Password</label></div>
+                          <div class=""><%= f.password_field :current_password, autocomplete: "off", class: "form-control", :placeholder => "Password (we need your current password to confirm your changes)" %></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

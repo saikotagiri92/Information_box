@@ -1,0 +1,4 @@
+
+$('.comments-container').append("<%= escape_javascript(render 'comments/comment.html.erb') %>")
+$('.new-comment-form').html("<%= escape_javascript(render 'comments/form.html.erb') %>")
+$('#comment_content').val("");

@@ -1,0 +1,61 @@
+<% provide(:page_title, 'Organisation People') %>
+<div class="row" id="organisation_people">
+    <div class="container">
+        <%=render "sidebar"%>
+        <div class="col-lg-9">
+            <div class="panel panel-default organisation-people-panel user-organisation-settings-panel">
+                <div class="panel-heading" style="height:52px">
+                    <div class="organisation-panel-title">People</div>
+                    <div class="pull-right account-panel-button">
+                        <%= link_to 'Add a Member', '#', "data-toggle" => "modal", "data-target"=> "#add-member-form-modal", :class=>"add-member btn btn-success btn-sm", :style => "margin-top: 0px;" %>
+                    </div>
+                </div>
+                <div class="panel-body organisation-people-panel-body">
+                    <!--<input type="text" class="form-control pull-right" style="width:200px" placeholder="Search">-->
+                    <div class="org-people-table">
+                        <table class="table table-condensed table-hover organisation-people-table">
+                            <thead>
+                                <tr>
+                                    <th class="span2">Name/Email</th>
+                                    <th class="span2">Admin</th>
+                                    <th class="span2">Active</th>
+                                    <th class="span2">Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <div class="org-people-table-body">
+                                    <% @organisation_people.each do |user| %>
+                                        <tr>
+                                            <td><%= user.name%>/<%= user.email%></td>
+                                            <% if user.id == @organisation.owner_id || user == current_user %>
+                                                <td>Owner</td>
+                                                <td><%= user.active? ? 'Active' : 'Inactive' %></td>
+                                                <td></td>
+                                            <% else %>    
+                                                <td><%= render :partial => 'people_checkbox', locals: {user: user, field: "admin", path: toggle_user_admin_privileges_path(user)} %></td>
+                                                <td><%= render :partial => 'people_checkbox', locals: {user: user, field: "active", path: toggle_user_active_privileges_path(user)} %></td>
+                                            
+                                                <td>
+                                                    <%= form_for(user, url: user_assign_role_path(user.id), method: 'put') do |f| %>
+                                                        <%= f.select :role_id, options_from_collection_for_select(@roles, :id, :name, user.role_id), include_blank: "Select Role" %>
+                                                        
+                                                        <%= f.submit 'Assign', class: "btn btn-danger btn-xs", id: "assign_role_button" %>
+                                                    <% end %>    
+                                                </td>
+                                            <% end %>    
+                                            
+                                        </tr>
+                                    <% end %>
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-footer organisation-people-panel-footer">
+                    <center><%= will_paginate @organisation_people %></center>
+                    <%= link_to 'Add a Member', '#', "data-toggle" => "modal", "data-target"=> "#add-member-form-modal", :class=>"add-member btn btn-success btn-sm pull-right", :style => "margin-top: 0px;" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<%= form_for([@organisation, @article.box, @article, @comment] ,:class => "kbapp-form", :remote => true) do |f| %>	
+	<%= f.hidden_field :user_id %>
+	<%= f.hidden_field :article_id %>
+    <%= f.text_area :content, :class => 'form-control new-comment-container ', :rows =>"3",  :required => true, :placeholder => "Write a comment..." %>
+    <%= f.submit 'Submit', :class => 'btn btn-primary add-comment-btn kbapp-form-button btn-disabled', :style => "" %>    
+
+<% end %>

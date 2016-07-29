@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  organisation_id: 1
+  can_access_boxes_index: false
+  can_access_boxes_show: false
+  can_access_boxes_edit: false
+  can_access_boxes_destroy: false
+  can_access_articles_show: false
+  can_access_articles_edit: false
+  can_access_articles_destroy: false
+  can_access_comments_create: false
+  can_access_comments_edit: false
+  can_access_comments_destroy: false
+
+two:
+  name: MyString
+  description: MyText
+  organisation_id: 1
+  can_access_boxes_index: false
+  can_access_boxes_show: false
+  can_access_boxes_edit: false
+  can_access_boxes_destroy: false
+  can_access_articles_show: false
+  can_access_articles_edit: false
+  can_access_articles_destroy: false
+  can_access_comments_create: false
+  can_access_comments_edit: false
+  can_access_comments_destroy: false

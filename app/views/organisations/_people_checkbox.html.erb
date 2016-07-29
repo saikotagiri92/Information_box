@@ -1,0 +1,8 @@
+<%= form_tag(path, :method => 'put') do %>
+<%= check_box_tag "users[#{user.id}][#{field}]", user.send("#{field}?"), user.send("#{field}?") %>
+<% end %>
+<script type="text/javascript">
+  $('#users_<%= "#{user.id}_#{field}" %>').change(function(){
+    $(this).closest('form').submit();
+  })
+</script>

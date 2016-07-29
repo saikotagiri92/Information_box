@@ -1,0 +1,40 @@
+<%= render 'boxes/assign_members_modal' %>
+<div class=" new-article-sidebar" >
+	<div class ="article-sidebar-content">
+		<div class="sidebar-box-name"><%= @article.box.name %></div>
+        <div class="sidebar-box-description"><%= @article.box.description %></div>
+        <% if get_user_permission_for_action('boxes_assign_users') %>
+            <%= link_to "Manage Members", '#', "data-toggle" => "modal", "data-target"=> "#assign-users" %>
+        <% end %>   
+        
+        <div class = "sidebar-new-article"><%= link_to 'New Article', new_organisation_box_article_url(@organisation, @article.box) %></div>
+        <!-- article sidebar -->
+        <% if !@article.box.description.present? %>
+            <div class = "sidebar-article-tree" style = "height: 83% !important;">
+        <% else %>
+            <div class = "sidebar-article-tree" style = "height: 72% !important;">
+        <% end %>
+	 		<div id = "article-tree" class="article-index filetree list-unstyled">     
+                <ul>
+                    <%= nested_articles(Article.where(box_id: @article.box.id).arrange(:order => :title)) %>
+                </ul>
+                
+            </div>
+        </div>
+        <!-- article sidebar end -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#article-tree").treeview({
+                    collapsed: true,
+                    persist: "location"
+                });
+            });
+        </script>
+	</div>
+	<% if get_user_permission_for_action('boxes_edit') || get_user_permission_for_action('boxes_destroy') %>
+        <div class = "article-sidebar-box-settings" >
+    		<%= link_to 'BOX SETTINGS', '#', "data-toggle" => "modal", "data-target"=> "#box-form-modal", :class=>"box-settings-link" %>
+        </div>
+        <br />
+    <% end %>   
+</div>

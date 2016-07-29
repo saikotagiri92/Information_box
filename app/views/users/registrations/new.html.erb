@@ -1,0 +1,58 @@
+<% provide(:page_title, 'Signup')  %>
+<style type="text/css">
+  body{
+    overflow-y: auto; 
+  }
+</style>
+
+<div class="row">
+</div>
+
+<div class="row" id="account_notification">
+  <div class="container">
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="signup-panel">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="height:52px">
+            <div class="account-panel-title">Signup</div>
+          </div>
+            <div class="panel-body">
+              <div class="col-lg-12">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= devise_error_messages! %>
+                  <div class="account-profile-field">
+                    <div class="account-profile-label"><%= f.label "Full Name" %></div>
+                    <div class="account-profile-input"><%= f.text_field :name, class: "form-control", :placeholder => "Full Name", :required => true %></div>
+                </div>
+                <div class="account-profile-field">
+                    <div class="account-profile-label"><%= f.label "Email" %></div>
+                    <div class="account-profile-input"><%= f.email_field :email, autofocus: true, class: "form-control", :placeholder => "Email", :required => true%></div>
+                </div>
+                <div class="account-profile-field">
+                    <div class="account-profile-label"><%= f.label "Organisation Name" %></div>
+                  <div class="account-profile-input"><%= text_field_tag "organisation[name]", '', class: "form-control", :placeholder => "Organisation Name" ,:required => true%></div>
+                </div>
+                <div class="account-profile-field">
+                  <div class="account-profile-label"><%= f.label "Password" %></div>
+                  <div class="account-profile-input"><%= f.password_field :password,  autocomplete: "off", class: "form-control", :placeholder => "Password (#{@minimum_password_length} characters minimum)",:required => true %></div>
+                </div>
+
+                <div class="account-profile-field">
+                  <div class="account-profile-label"><%= f.label "Password Confirmation" %></div>
+                  <div class="account-profile-input"><%= f.password_field :password_confirmation,  autocomplete: "off", class: "form-control", :placeholder => "Password Confirmation",:required => true %></div>
+                </div>
+                  <%= f.hidden_field :admin, value: true %>
+                  <%= f.hidden_field :active, value: true %>
+                  <%= f.submit 'Get Started', class: "btn btn-success login-button" %>
+                  <br /><br />
+                  <%= render "users/shared/links" %>
+                  
+                <% end %>
+              </div>
+          </div>
+        </div>
+          <div class = "signup-privicy-statement"><p>By signing up, you agree to our <a href = "#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</p></div>
+      </div>
+    </div>
+  </div>
+</div>

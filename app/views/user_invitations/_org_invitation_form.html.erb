@@ -1,0 +1,32 @@
+
+<div class="modal fade" id="add-member-form-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" style="color: black;">Add a Member</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag(organisation_invitation_url(@organisation), :method => 'post', :class => "kbapp-form") do %>
+            <div class ="modal-field-label"><%= label_tag "Name"%></div>
+            <%= text_field_tag "org_invitation[name]", '', :placeholder => "Recipient's Name", :class => "form-control modal-field", :required => true %>
+            <br />
+            <div class ="modal-field-label"><%= label_tag "Email"%></div>
+            <%= email_field_tag "org_invitation[email]", '', :placeholder => "Recipient's Email", :class => "form-control modal-field", :required => true %>
+            <br>
+            <%= hidden_field_tag "org_invitation[admin]", false %>
+            <%= hidden_field_tag "org_invitation[active]", true %>
+            <%= hidden_field_tag "org_invitation[organisation_id]", @organisation.id %>
+
+            <%= submit_tag "Submit", :class => "btn btn-success" %>
+
+                    
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+<!-- User Feedback Modal Code End-->

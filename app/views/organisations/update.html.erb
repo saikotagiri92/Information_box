@@ -1,0 +1,50 @@
+
+<!-- not to be deleted -->
+<!--
+<%# if @organisation.organisation_logo == nil %>
+    <%# if @organisation_logo != nil %>
+        <%# if @organisation_logo.errors.any? %>
+            <div class="alert alert-danger" style = "width: 500px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                Organisation logo could not be updated due to following reasons
+            </div>
+            <div class="error_messages">
+                <ul>
+                    <%# for message in @organisation_logo.errors.full_messages %>
+                        <li>* <%#= message %></li>
+                    <%# end %>
+                </ul>
+            </div>
+        <%# else %>
+            <div class="alert alert-success" style = "width: 500px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                Organisation logo have been updated successfully.
+            </div>
+        <%# end %>
+    <%# end %>
+<%# elsif @organisation.organisation_logo != nil %>
+    <%# if @organisation.organisation_logo.errors.any? %>
+        <div class="alert alert-danger" style = "width: 500px;">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            Organisation logo could not be updated due to following reasons
+        </div>
+        <div class="error_messages">
+            <ul>
+                <%# for message in @organisation.organisation_logo.errors.full_messages %>
+                    <li>* <%#= message %></li>
+                <%# end %>
+            </ul>
+        </div>
+    <%# else %>
+        <div class="alert alert-success" style = "width: 500px;">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            Organisation logo have been updated successfully.
+        </div>
+    <%# end %>
+<%# end %>-->
+<div class="row" id="settings">
+  <div class="container">
+    <%=render "scoped_controllers/organisations/organisation_sidebar"%>
+    <%= render 'scoped_controllers/organisations/organisation_settings_form' %>   
+  </div>
+</div>

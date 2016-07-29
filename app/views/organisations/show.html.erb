@@ -1,0 +1,55 @@
+
+<div class = "organisation-dashboard-title" >
+	Information Boxes
+</div>
+<div class="row row-dashboard">
+	<div class="container">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 organisation-dashboard-small-container">
+			<% if get_user_permission_for_action('boxes_new') %>
+				<%= link_to 'Create Box', "#", :class=>"btn btn-success pull-left create-box", "data-toggle" => "modal", "data-target"=> "#box-form-modal" %> </br>
+			<% end %>	
+			<div class=" btn-group pull-left toggle-buttons" data-toggle="buttons">
+				<ul class="nav nav-tabs" id="box-switcher">
+					<li class="active"><a href="#boxes-as-list" type="radio" class="box-switcher" name="options" id="option1" data-toggle="tab"> <span class="glyphicon glyphicon-th-list toggle-boxes"></span></a></li>
+					<li><a href="#boxes-as-boxes" type="radio" class="box-switcher" name="options" id="option2" data-toggle="tab"> <span class="glyphicon glyphicon-th-large toggle-boxes"></span></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 pull-right">
+			
+			<div class="tab-content">
+				<div class="tab-pane active" id="boxes-as-list">
+					<ul class="list-unstyled boxes-list" >
+						<li class="small description-box dashboard-box-list">Boxes&nbsp;&nbsp;
+							<div class="pull-right">Updated On</div>
+						</li>
+						<% current_user.boxes.each do |box| %>
+							<li class="boxes-list-content"><%= link_to box.name, organisation_box_url(@organisation, box) %>  <div class="pull-right date"><%= time_as_ago_calculation(box.updated_at) %> </div></li>
+						<% end %>
+					</ul>
+				</div>
+				<div class="tab-pane boxes-as-boxes" id="boxes-as-boxes">
+					<% @organisation.boxes.each do |box| %>
+						<div class="panel panel-default dashboard-box" >
+  							<div class="panel-body">
+    							<div class="box-title"><%= link_to box.name, organisation_box_url(@organisation, box) %></div>
+								<div class="box-content"><%= box.description %></div>
+								<div class="box-last-update"><%= time_as_ago_calculation(box.updated_at) %> </div>
+  							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>	
+			
+		</div>
+	</div>
+</div>
+
+
+<!--<script type="text/javascript">
+  	$('#create-box').modal({
+    	fadeDuration: 250
+  	
+  	});
+</script>-->
+

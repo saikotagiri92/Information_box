@@ -1,0 +1,46 @@
+<div class ="row">
+<div class = "container">
+	
+	<% if @search_results != nil and @search_results.size >= 1 %>
+	<div class = "search-results-container">
+		<div class = "search-results-container-heading">
+			Matches Found in Articles
+		</div>
+		<div class = "results-container list-group">
+			<% @search_results.with_details.each do |article, details|  %>	
+				<a href = "<%= article_show_url(article.box.box_url_name, article.article_url_title) %>" , class = "list-group-item">
+				
+					<h2 class = "result-container-article-name"><%= details[:highlight][:article_title].html_safe %></h2>
+					<div class = "result-container-article-content-small">
+						<%# if article.article_content != nil and article.article_content != "" %>
+							<%#= article.article_content[0...170].html_safe  %>
+						<%# end %>
+					</div>
+					<div class = "result-box-name">
+						In <%= article.box.box_name %>
+					</div> 
+				</a>
+			<% end %>
+			<div class = "search-results-pagination-links">
+				<%#= will_paginate @search_results %>
+			</div>
+		</div>
+	</div>
+	<% else %>
+	<div class = "search-results-container">
+		<div class = "search-results-container-heading">
+			<h3> No results similar to your search term found</h3>
+		</div>
+	</div>
+	<% end %>
+</div>
+<script type="text/javascript">
+	$( ".list-group-item" ).mouseenter(function() {
+		$( this ).css("background-color", "#efefef")
+	});
+	$( ".list-group-item" ).mouseleave(function() {
+		$( this ).css("background-color", "white")
+	});
+	//$('.result-container-article-content-small').unwrap();
+	
+</script>	

@@ -1,0 +1,12 @@
+[Dolphin]
+GroupedSorting=true
+SortRole=type
+<<<<<<< HEAD
+Timestamp=2013,11,14,15,39,3
+=======
+Timestamp=2013,11,14,11,49,46
+>>>>>>> e7b1b851e5ed69525bc4360918da1f5ad564c3fe
+Version=3
+
+[Settings]
+HiddenFilesShown=true

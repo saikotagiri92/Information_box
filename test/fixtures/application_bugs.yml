@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bug_raised_by: 1
+  bug_details: MyText
+  bug_raised_from_ip: MyString
+  bug_raised_from_platfrom: MyString
+
+two:
+  bug_raised_by: 1
+  bug_details: MyText
+  bug_raised_from_ip: MyString
+  bug_raised_from_platfrom: MyString

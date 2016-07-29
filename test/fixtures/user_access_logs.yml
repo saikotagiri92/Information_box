@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  login_organisation_id: 1
+  login_ip_address: MyString
+  login_device_name: MyString
+  login_time: 2013-10-25 14:38:01
+  logout_time: 2013-10-25 14:38:01
+  session_time: MyString
+
+two:
+  user_id: 1
+  login_organisation_id: 1
+  login_ip_address: MyString
+  login_device_name: MyString
+  login_time: 2013-10-25 14:38:01
+  logout_time: 2013-10-25 14:38:01
+  session_time: MyString

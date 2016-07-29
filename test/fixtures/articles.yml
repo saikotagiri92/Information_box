@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  article_title: MyString
+  created_by: 1
+  article_content: MyText
+  deleted_on: 2013-09-11 18:08:49
+  deleted_by: 1
+  last_updated_by: 1
+  parent_id: 1
+  box_id: 1
+
+two:
+  article_title: MyString
+  created_by: 1
+  article_content: MyText
+  deleted_on: 2013-09-11 18:08:49
+  deleted_by: 1
+  last_updated_by: 1
+  parent_id: 1
+  box_id: 1

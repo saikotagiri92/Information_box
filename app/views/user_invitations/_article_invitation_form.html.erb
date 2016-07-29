@@ -1,0 +1,7 @@
+
+<%= form_tag(article_invitation_url(@article), :class => "kbapp-form article-share-popover-content") do %>
+	<div class = "article-invite-label"><%= label_tag "Recipient's Email"%></div>
+	<%= email_field_tag "article_invitation[recipient_email]", '', :placeholder => "Username", :class => "form-control", :required => true %><br />
+	<%= submit_tag "Share", :class => "btn btn-primary kbapp-form-button btn-disabled" %>
+<% end %>
+ 

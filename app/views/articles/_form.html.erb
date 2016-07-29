@@ -1,0 +1,81 @@
+<% provide(:page_title, @article.try(:title)) %>
+
+<%= javascript_include_tag "tinymce-jquery" %>
+
+<div class = "section">
+	<div class = "row">
+		<!-- article sidebar starts -->
+		<%=render 'article_sidebar'%>
+		<!-- article sidebar ends -->
+
+        <% if @article.errors.any? %>
+            <div class="alert alert-danger" style = "width: 500px; margin-left:250px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                Your article could not be updated due to following reasons
+                
+                <div class="error_messages">
+                    <ul>
+                        <% for message in @article.errors.full_messages %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(".alert alert-danger").alert()
+                $(".alert alert-danger").alert('close')
+            </script>
+        <% end %>
+
+		<!-- article new form starts -->
+		<div class = "article-form">
+			<%= form_for([@organisation, @article.box, @article], :multipart => true, :class => "kbapp-form", :id => "article-form") do |f| %>
+				<!-- article title field -->
+				<%= f.text_field :title, :class => "form-control article-name-field", :maxlength => 160,   :required => true, :placeholder => "Type the name of Article " %>
+				
+				<!-- article content textarea -->
+				<%= f.text_area :content, :class => "tinymce form-control", :rows => "30" %>
+                <%= f.hidden_field :author_id %>
+                <%= f.hidden_field :box_id %>
+
+                <!-- tinymce initialize script -->
+                <script type="text/javascript">
+                    tinyMCE.init({
+                        mode: 'textareas',
+                        menubar: false,
+                        statusbar: false,
+                        plugins: "table,fullscreen, image, link, print, textcolor, lists, advlist, media, autolink",
+                        toolbar: "formatselect , bold italic underline , alignleft aligncenter alignright alignjustify , outdent indent , bullist numlist , link image , undo redo , table ,  textcolor , removeformat"
+                    });
+                </script>
+                <!-- article form options -->
+                <div class = "article-form-bottom-bar">
+                	<div class = "article-form-options">
+                        <label class = "parent-article-select-label">Parent Article</label>
+                        <%= f.select :parent_id, options_from_collection_for_select(@box.articles, :id, :title, @article.parent_id), include_blank: "None" %>
+                		<%= link_to 'Discard', organisation_box_url(@organisation, @box),  :class => "btn article-form-discard-button", :method => 'get' %>
+                		<%= f.submit "Submit", :id => "article-form-submit", :class => "btn btn-success article-form-submit-button kbapp-form-button btn-disabled"  %>
+                    </div>
+                </div>
+			<% end %>
+		</div>
+        <!-- Article Form window.onbeforeunlodad script -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var warn_on_unload = "";       
+                $('input:text,input:checkbox,input:radio,textarea,select').one('change', function(){
+                    warn_on_unload = "Are you sure you want to leave this page?";
+                    $('#article-form-submit').click(function(){
+                        warn_on_unload = "";
+                    });
+                    window.onbeforeunload = function(){
+                        if(warn_on_unload != ""){
+                            return warn_on_unload;
+                        }   
+                    }
+                });
+            });
+        </script>
+		<!-- article form ends -->
+	</div>
+</div>

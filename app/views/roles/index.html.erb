@@ -1,0 +1,46 @@
+<% provide(:page_title, 'Roles') %>
+<div class="row" id="organisation_people">
+    <div class="container">
+        <%=render "organisations/sidebar"%>
+        <div class="col-lg-9">
+            <div class="panel panel-default organisation-people-panel user-organisation-settings-panel">
+                <div class="panel-heading" style="height:52px">
+                    <div class="organisation-panel-title">Roles</div>
+                    <div class="pull-right account-panel-button">
+                        <%= link_to 'New Role', new_organisation_role_path, :class=>"add-member btn btn-success btn-sm", :style => "margin-top: 0px;" %>
+                    </div>
+                </div>
+                <div class="panel-body organisation-people-panel-body">
+                    <!--<input type="text" class="form-control pull-right" style="width:200px" placeholder="Search">-->
+                    <div class="org-people-table">
+                        <table class="table table-condensed table-hover organisation-people-table">
+                            <thead>
+                                <tr>
+                                    <th class="span2">Name</th>
+                                    <th colspan="2">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <div class="org-people-table-body">
+                                    <% @roles.each do |role| %>
+                                        <tr>
+                                            <td><%= role.name.titleize %></td>
+                                            <td><%= link_to 'Edit', edit_organisation_role_path(@organisation, role) %></td>
+                                            <td><%= link_to 'Destroy', [@organisation, role], method: :delete, data: { confirm: 'Are you sure?' } %>    
+                                        </tr>
+                                    <% end %>
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-footer organisation-people-panel-footer">
+                  <%= link_to 'New Role', new_organisation_role_path, :class=>"add-member btn btn-success btn-sm pull-right", :style => "margin-top: 0px;" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

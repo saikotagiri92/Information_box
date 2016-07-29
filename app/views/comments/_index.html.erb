@@ -1,0 +1,18 @@
+<% @article.comments.each do |comment| %>
+    <div class="row row-comment" id = "comment-<%= comment.id %>">
+        <div class="user-comment">
+            <div class = "user-initials"><%= User.user_name_initials(comment.user.name).second %>
+            </div>
+            <div class = "comment-maker"><a href="#"></a>  <span class = "comment"><%= comment.content %></span>     <br>
+                <div class = "comment-create-date">
+                    <%= time_as_ago_calculation(comment.created_at) %> 
+                    
+                    <% if comment.user == current_user %>
+                        &#8226; <%= link_to 'Edit', edit_organisation_box_article_comment_path(@organisation, @article.box, @article, comment), :remote => true  %> 
+                     <% end %>
+                     &#8226; <%= link_to 'Delete', organisation_box_article_comment_path(@organisation, @article.box, @article, comment), :data => { :confirm => "Are you sure you want to delete the comment?" }, :method => :delete, :remote => true  %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

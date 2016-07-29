@@ -1,0 +1,45 @@
+
+<div class="modal fade" id="assign-users" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" style="color: black;">Assign Members</h4>
+      </div>
+      <div class="modal-body">
+        <% org_users = fetch_users_for_box_assignment %>
+        <% if org_users.present? %>
+          <% if get_user_permission_for_action('boxes_new') || get_user_permission_for_action('boxes_edit') %>
+            <%= form_tag(organisation_box_assign_users_path(@organisation.id, @article.box.id), method: 'post', class: "kbapp-form") do %>
+              
+              <% org_users.in_groups_of(assign_users_grouping(org_users), false).each do |users| %>
+                <div class="col-lg-6">
+                  <% users.each do |user| %>
+                    <div class="field">
+                      <%= check_box_tag "box[users][#{user.id}]", user.id, @article.box.users.include?(user) %>
+                      <%= "#{user.name} (#{user.email})" %>
+                      <br />
+                      <br />
+                    </div>
+
+                  <% end %>
+                </div>  
+              <% end %>
+              
+              <div class="col-lg-12">
+                  <%= submit_tag 'Submit', class: 'btn btn-success' %>
+              </div>  
+            <% end %>
+          <% end %>
+        <% else %>
+          <p>There are no assignable users for the box.</p>
+        <% end %>    
+      </div>
+      <div style="clear: both;"></div>
+      <br />
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

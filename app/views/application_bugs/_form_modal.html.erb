@@ -1,0 +1,30 @@
+
+<div class="modal fade" id="bug-form-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" style="color: black;">Raise a Bug</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(@application_bug, :class => "kbapp-form") do |f| %>
+          <h2>Please provide your feedback below:</h2><br>
+          <div class="modal-field-label">
+              <label>What went wrong?</label>
+          </div>
+          <%= f.text_area :bug_details, :class => "form-control modal-field user-feedback-textarea", :required => true, :size => "10x10" %>
+          <br />
+          <%= f.hidden_field :bug_raised_from_platform %>
+          <%= f.hidden_field :bug_raised_from_ip %>
+          <%= f.hidden_field :bug_raised_by %>
+          <span >
+            <%= submit_tag "Submit", class: "btn btn-success kbapp-form-button btn-disabled"  %>
+          </span>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,8 @@
+<p>Dear <%= @user.name.titleize %>,</p>
+
+<p>Your account has been <%= @user.active? ? 'activated by administrator. You can now log in.' : 'deactivated by administrator.' %></p>
+<% if @user.active? %>
+	<p><%= link_to new_user_session_url, new_user_session_url %></p>
+<% end %>
+<p>Regards,</p>
+<p>Team Information Box</p>

@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'environment'))
+require 'delayed/command'
+Delayed::Command.new(ARGV).daemonize
+
+# in development env change RAILS_ENV=development
+# in production env change RAILS_ENV=production
+RAILS_ENV=development script/delayed_job start
+RAILS_ENV=development script/delayed_job stop

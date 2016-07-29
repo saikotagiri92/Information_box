@@ -1,0 +1,87 @@
+<% provide(:page_title, 'Organisation Settings') %>
+<style type="text/css">
+    body{
+        overflow-y: auto; 
+    }
+</style>
+<div class="col-lg-9">
+    <div id = "organisation-settings-error-messages"></div>
+    <%= form_for(@organisation, :remote => true ) do |f| %>
+        <div class="panel panel-default user-organisation-settings-panel">
+            <div class="panel-heading" style="height:52px"> 
+                <div class="organisation-panel-title">Settings</div>
+                <%= submit_tag 'Save', :class => "btn btn-primary btn-sm pull-right account-panel-button" %>    
+            </div>
+            <div class="panel-body">
+                <!-- not to be deleted -->
+                <!--<div class="organisation-settings-logo">
+                    <div>Add your Logo</div>
+                    <%# if current_organisation.organisation_logo != nil %>
+                        <%#= image_tag(current_organisation.organisation_logo.logo.url(:thumb)) %>
+                    <%# else %>
+                        <img src="http://placehold.it/152x152">
+                    <#% end %>
+                    <%#= file_field_tag "organisation_settings[logo]" %>
+                        
+                </div>-->
+                <div class="col-lg-12 organisation-settings-form">
+                    <div class="account-profile-field">
+                        <div class=""><label class="account-profile-label"><%= f.label :name %></label></div>
+                        <%= f.text_field :name, :class => "form-control", :required => true %>
+                    </div>
+                    <div class="account-profile-field">
+                        <div class=""><label class="account-profile-label"><%= f.label :description %></label></div>
+                        <div class="account-profile-input"><%= f.text_area :description, :class => "form-control organisation-description-textarea", :placeholer => "", :size => 160, :maxlength => 160  %></div>
+                    </div>
+
+                    <div class="account-profile-field">
+                        <div class=""><label class="account-profile-label"><%= f.label :address_line_1 %></label></div>
+                        <%= f.text_field :address_line_1, :class => "form-control" %>
+                    </div>
+
+                    <div class="account-profile-field">
+                        <div class=""><label class="account-profile-label"><%= f.label :address_line_2 %></label></div>
+                        <%= f.text_field :address_line_2, :class => "form-control" %>
+                    </div>
+
+                    <div class="account-profile-field">
+                        <div class=""><label class="account-profile-label"><%= f.label :city %></label></div>
+                        <%= f.text_field :city, :class => "form-control" %>
+                    </div>
+
+                    <div class="account-profile-field">
+                        <div class=""><label class="account-profile-label"><%= f.label :state %></label></div>
+                        <%= f.text_field :state, :class => "form-control" %>
+                    </div>
+
+                    <div class="account-profile-field">
+                        <div class=""><label class="account-profile-label"><%= f.label :country %></label></div>
+                        <%= f.text_field :country, :class => "form-control" %>
+                    </div>
+
+                    <div class="account-profile-field">
+                        <div class=""><label class="account-profile-label"><%= f.label :phone_number %></label></div>
+                        <%= f.text_field :phone_number_1, :class => "form-control" %>
+                    </div>
+
+                    <div class="account-profile-field">
+                        <div class=""><label class="account-profile-label"><%= f.label :contact_person %></label></div>
+                        <%= f.text_field :contact_person, :class => "form-control" %>
+                    </div>
+                    
+                </div>
+            </div>        
+            <div class="panel-footer organisation-people-panel-footer">
+                <%= submit_tag 'Save', :class => "btn btn-primary btn-sm pull-right" %>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+
+<script type="text/javascript">
+    $(function() {
+        $('#DropDownTimezone').find('option[value="<%= @organisation.time_zone %>"]').attr('selected', 'selected');    
+    });
+    
+</script>

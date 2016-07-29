@@ -1,0 +1,111 @@
+<% provide(:page_title, 'Roles Form | Roles') %>
+<style type="text/css">
+  body{
+    overflow-y: auto; 
+  }
+</style>
+<div class="row" id="organisation_people">
+    <div class="container">
+        <%=render "organisations/sidebar"%>
+        <div class="col-lg-9">
+            <div class="panel panel-default organisation-people-panel user-organisation-settings-panel">
+                <div class="panel-heading" style="height:52px">
+                    <div class="organisation-panel-title">Role Form</div>
+                    <div class="pull-right account-panel-button">
+                        <%= link_to 'Cancel', organisation_roles_path, :class=>"add-member btn btn-success btn-sm", :style => "margin-top: 0px;" %>
+                    </div>
+                </div>
+                <div class="panel-body organisation-people-panel-body">
+                  <%= form_for([@organisation, @role]) do |f| %>
+                    <% if @role.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(@role.errors.count, "error") %> prohibited this role from being saved:</h2>
+
+                        <ul>
+                        <% @role.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+                    
+                    <div class="account-profile-field">
+                      <div class="account-profile-label"><%= f.label "Name" %></div>
+                      <div class="account-profile-input"><%= f.text_field :name,class: "form-control", :placeholder => "Name", :required => true %></div>
+                    </div>
+
+                    <div class="account-profile-field">
+                      <div class="account-profile-label"><%= f.label "Description" %></div>
+                      <div class="account-profile-input"><%= f.text_area :description, class: "form-control", :placeholder => "Description", :required => true %></div>
+                    </div>
+                    <%= f.hidden_field :organisation_id %>
+                    <h3>Box permissions</h3>
+                    <hr>
+                    <div class="field">
+                      <%= f.check_box :can_access_boxes_index %>
+                      <%= f.label :can_access_boxes_index, "View box listings" %>
+                    </div>
+                    <div class="field">
+                      <%= f.check_box :can_access_boxes_new %>
+                      <%= f.label :can_access_boxes_new, "Create a box" %>
+                    </div>
+                    <div class="field">
+                      <%= f.check_box :can_access_boxes_show %>
+                      <%= f.label :can_access_boxes_show, "View box articles" %>
+                    </div>
+                    <div class="field">
+                      <%= f.check_box :can_access_boxes_edit %>
+                      <%= f.label :can_access_boxes_edit, "Edit box settings" %>
+                    </div>
+                    <div class="field">
+                      <%= f.check_box :can_access_boxes_destroy %>
+                      <%= f.label :can_access_boxes_destroy, "Destroy box" %>
+                    </div>
+
+                    <div class="field">
+                      <%= f.check_box :can_access_boxes_assign_users %>
+                      <%= f.label :can_access_boxes_assign_users, "Manage box users" %>
+                    </div>
+
+                    <h3>Article permissions</h3>
+                    <hr>
+                    <div class="field">
+                      <%= f.check_box :can_access_articles_new %>
+                      <%= f.label :can_access_articles_new, "Create article" %>
+                    </div>
+                    <div class="field">
+                      <%= f.check_box :can_access_articles_edit %>
+                      <%= f.label :can_access_articles_edit, "Edit article" %>
+                    </div>
+                    <div class="field">
+                      <%= f.check_box :can_access_articles_destroy %>
+                      <%= f.label :can_access_articles_destroy, "Destroy article" %>
+                    </div>
+
+                    <h3>Comments permissions</h3>
+                    <hr>
+                    <div class="field">
+                      <%= f.check_box :can_access_comments_create %>
+                      <%= f.label :can_access_comments_create, "Post a comment" %>
+                    </div>
+                    <div class="field">
+                      <%= f.check_box :can_access_comments_edit %>
+                      <%= f.label :can_access_comments_edit, "Edit a comment" %>
+                    </div>
+                    <div class="field">
+                      <%= f.check_box :can_access_comments_destroy %>
+                      <%= f.label :can_access_comments_destroy, "Destroy a comment" %>
+                    </div>
+                    <div class="actions">
+                      <%= f.submit class: 'btn btn-primary' %>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="panel-footer organisation-people-panel-footer">
+                  <%= link_to 'Cancel', organisation_roles_path, :class=>"add-member btn btn-success btn-sm pull-right", :style => "margin-top: 0px;" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

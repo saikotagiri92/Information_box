@@ -1,0 +1,5 @@
+//$alert('edit link clicked');
+//$('#comment-<%= j j params[:comment_id] %>').empty();
+$('.comments-container').html("<%= escape_javascript(render 'comments/index.html.erb') %>");
+$('#comment-<%= j params[:id] %>').html("<%= escape_javascript(render 'comments/form.html.erb') %>");
+$('.new-comment-form').hide();

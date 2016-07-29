@@ -1,0 +1,9 @@
+<div class="col-lg-3">
+	<div class="user-settings-sidebar list-group list user-organisation-settings-sidebar">
+		<b class="full-name-header list-group-item list-header-organisation"><%= @organisation.name %></b>
+		<%= link_to 'Settings', edit_organisation_path(@organisation), :class => "list-group-item organisation-settings-sidebar-element" %>
+		<%= link_to 'People', people_organisation_path(@organisation), :class => "list-group-item organisation-settings-sidebar-element" %>
+		<%= link_to 'Roles', organisation_roles_path(@organisation), :class => "list-group-item organisation-settings-sidebar-element" %>
+		
+	</div>
+</div>

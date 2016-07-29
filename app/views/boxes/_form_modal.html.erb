@@ -1,0 +1,37 @@
+
+<div class="modal fade" id="box-form-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" style="color: black;">Box Form</h4>
+      </div>
+      <div class="modal-body">
+        <% if get_user_permission_for_action('boxes_new') || get_user_permission_for_action('boxes_edit') %>
+          <%= form_for([@organisation, @article.try(:box) || Box.new(organisation_id: @organisation.id, created_by: current_user.id)], html: {:class => "kbapp-form"}) do |f| %>
+        
+        <%= f.text_field :name, :class => "form-control modal-field", :required => true, :placeholder => "Enter box name..." %><br />
+        <div class = "modal-field-label">
+          <%= f.label "Description (Optional)" %>
+        </div>
+          <%= f.text_field :description, :class => "form-control modal-field", :size => 160, :placeholder => "Enter box description...", :maxlength => 160 %> 
+        <br />
+        <%= f.hidden_field :organisation_id %>
+        <%= f.hidden_field :created_by %>
+
+        <span>
+          <%= submit_tag "Save", class: "btn btn-success kbapp-form-button btn-disabled"  %>
+          
+        </span>
+      <% end %>
+    <% else %>
+      <p>You are not aurthorized by admin to create/edit a box %></p> 
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <%= link_to 'Delete', organisation_box_url(@organisation, @article.box), :method => 'delete', :data => { :confirm => "Are you sure you want to delete the box?" }, :class => "btn btn-danger modal-options-cancel" if @article.present? %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

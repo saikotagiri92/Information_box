@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @role.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @role.description %>
+</p>
+
+<p>
+  <strong>Organisation:</strong>
+  <%= @role.organisation_id %>
+</p>
+
+<p>
+  <strong>Can access boxes index:</strong>
+  <%= @role.can_access_boxes_index %>
+</p>
+
+<p>
+  <strong>Can access boxes show:</strong>
+  <%= @role.can_access_boxes_show %>
+</p>
+
+<p>
+  <strong>Can access boxes edit:</strong>
+  <%= @role.can_access_boxes_edit %>
+</p>
+
+<p>
+  <strong>Can access boxes destroy:</strong>
+  <%= @role.can_access_boxes_destroy %>
+</p>
+
+
+<p>
+  <strong>Can access articles edit:</strong>
+  <%= @role.can_access_articles_edit %>
+</p>
+
+<p>
+  <strong>Can access articles destroy:</strong>
+  <%= @role.can_access_articles_destroy %>
+</p>
+
+<p>
+  <strong>Can access comments create:</strong>
+  <%= @role.can_access_comments_create %>
+</p>
+
+<p>
+  <strong>Can access comments edit:</strong>
+  <%= @role.can_access_comments_edit %>
+</p>
+
+<p>
+  <strong>Can access comments destroy:</strong>
+  <%= @role.can_access_comments_destroy %>
+</p>
+
+<%= link_to 'Edit', edit_role_path(@role) %> |
+<%= link_to 'Back', roles_path %>

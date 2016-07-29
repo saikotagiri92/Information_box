@@ -1,0 +1,40 @@
+<% provide(:page_title, 'Change your password')  %>
+
+<div class="row" id="account_notification">
+    <div class="container">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="signup-panel">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="height:52px">
+                        <div class="account-panel-title">Change your password</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-lg-12">
+                            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+                              <%= devise_error_messages! %>
+                              <%= f.hidden_field :reset_password_token %>
+                                <div class="account-profile-field">
+                                    <div class="login-profile-label"><label class=""><%= f.label :password %></label></div>
+                                    <div class="account-profile-input"><%= f.password_field :password, autofocus: true, :class => "form-control", :placeholder => "Password (#{@minimum_password_length} characters minimum)", :required => true, :tabindex => "1" %></div>
+                                </div>
+
+                                <div class="account-profile-field">
+                                    <div class="login-profile-label"><label class="">Password Confirmation</label></div>
+                                    <div class="account-profile-input"><%= f.password_field :password_confirmation, autofocus: true, :class => "form-control", :placeholder => "Password confirmation", :required => true, :tabindex => "1" %></div>
+                                </div>
+                            <div>
+                                    <br />
+                                    <%= f.submit "Change my password", :class => "btn btn-success login-button", :tabindex => "4" %>
+                                    <br />
+                                    <br />
+                                    <%= render "users/shared/links" %>
+
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

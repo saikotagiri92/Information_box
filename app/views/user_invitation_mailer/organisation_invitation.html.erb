@@ -1,0 +1,20 @@
+<h3><b>Your new Information Box account</b></h3><br>
+<p>You have been added as a member of Organisation: <%= link_to @org.name, organisation_url(@org) %>'s Information Box. Please sign in to continue...</p>
+<p>Your account information:</p>
+<ul>
+	<li>Login: <%= @new_user[:email] %></li>
+	<li>Password: newuser123</li>
+</ul>
+<p>Sign in: <%= new_user_session_url %></p>
+<p>What's Information Box? </p>
+<p>Information Box is a collaborative central knowledge repository.</p>
+
+<p>Regards,<br />
+Team Information Box</p>
+
+<br><br>
+<div class = "mail-footer" style = "color: #A1A1A1;">
+	<hr>
+	You're receiving this email because at some point in time you signed up for or you have beed added in <a href="informationbox.herokuapp.com" target="_blank">Information Box</a>.<br> 
+	Copyright © <a href = "http://informationbox.herokuapp.com">Information Box</a>. All rights reserved. </p>
+</div>

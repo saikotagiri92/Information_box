@@ -1,0 +1,14 @@
+menubar: false
+statusbar: false
+toolbar1: formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | link image | undo redo | table |  textcolor | removeformat
+plugins:
+  - table
+  - fullscreen
+  - image
+  - link
+  - print
+  - textcolor
+  - lists
+  - advlist 
+  - media
+  - autolink

@@ -1,0 +1,25 @@
+<% provide(:page_title, "Update Box") %>
+<% provide(:box_title, @box.box_url_name) %>
+
+<% if @box.errors.any? %>
+    <div class="alert alert-danger" style = "width: 500px;">
+    	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    	Your box could not be updated due to following reasons
+    </div>
+
+    <div class="error_messages">
+      <ul>
+        <% for message in @box.errors.full_messages %>
+          	<% if message != "Subdomain has already been taken" %>
+          		<li><%= message %></li>
+          	<% end %>
+        <% end %>
+      </ul>
+    </div>
+    
+    <script type="text/javascript">
+		$(".alert alert-danger").alert()
+		$(".alert alert-danger").alert('close')
+	</script>
+<% end %>
+<%= render 'scoped_controllers/boxes/box_form' %>

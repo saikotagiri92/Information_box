@@ -1,0 +1,32 @@
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: sairaj@1994!
+  host: localhost
+
+development:
+  <<: *default
+  database: information_box_development
+
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: information_box_test
+
+production:
+  #prod heroku config
+  # host: ec2-174-129-37-54.compute-1.amazonaws.com
+  # database: del3pmh8f9dpbu
+  # username: oxqlazaqzpnyku
+  # port: 5432
+  # password: 'N1fmHde4rJhVje1EsXEOfeA8Z_'
+
+  #local sys config
+  <<: *default
+  database: information_box_production

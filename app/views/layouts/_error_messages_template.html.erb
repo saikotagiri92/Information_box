@@ -1,0 +1,31 @@
+
+<% if model_object.errors.any? %>
+    <div id="error_explanation">
+        <div class="alert alert-danger" style = "width: 500px;">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            The form contains <%= pluralize(model_object.errors.count, "error") %>.
+        </div>
+        <ul>
+            <% model_object.errors.full_messages.each do |msg| %>
+                <li class = "error-message">* <%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% else %>
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= success_message %>
+    </div>
+        
+    <script type="text/javascript">
+        window.setTimeout(function() { $("#error_explanation").html(''); }, 10000);
+        
+    </script>
+
+<% end %>
+<script type="text/javascript">
+    if($("#user_password").length != 0) {
+        $('#user_password').val("");
+        $('#user_current_password').val("");
+    }
+</script>

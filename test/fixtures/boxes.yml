@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  organisation_id: 1
+  box_name: MyString
+  box_description: 
+  created_by: 1
+  last_updated_by: 1
+
+two:
+  organisation_id: 1
+  box_name: MyString
+  box_description: 
+  created_by: 1
+  last_updated_by: 1

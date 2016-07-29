@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  permitted_article_id: 1
+  permitted_user_id: 1
+  permission_given_by: 1
+  article_permission_id: 1
+
+two:
+  permitted_article_id: 1
+  permitted_user_id: 1
+  permission_given_by: 1
+  article_permission_id: 1

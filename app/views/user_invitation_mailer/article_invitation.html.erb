@@ -1,0 +1,12 @@
+<p>Hi,</p>
+<p>You have been invited to view article: <%= link_to @article.title, organisation_box_article_url(@sender.organisation_id, @article.box_id, @article.id) %> by <%= @sender.name %>. <br /></p>
+
+<p>Regards,<br />
+Team Information Box</p>
+
+<br><br>
+<div class = "mail-footer" style = "color: #A1A1A1;">
+	<hr>
+	You're receiving this email because at some point in time you signed up for or you have beed added in <a href="informationbox.herokuapp.com" target="_blank">Information Box</a>.<br> 
+	Copyright © <a href = "http://informationbox.herokuapp.com">Information Box</a>. All rights reserved. </p>
+</div>

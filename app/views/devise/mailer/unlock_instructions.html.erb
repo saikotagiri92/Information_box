@@ -1,0 +1,17 @@
+<p>Hello <%= @resource.email %>!</p>
+
+<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+
+<p>Click the link below to unlock your account:</p>
+
+<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+
+<p>Regards,<br />
+Team Information Box</p>
+
+<br><br>
+<div class = "mail-footer" style = "color: #A1A1A1;">
+	<hr>
+	You're receiving this email because at some point in time you signed up for or you have beed added in <a href="informationbox.herokuapp.com" target="_blank">Information Box</a>.<br> 
+	Copyright © <a href = "http://informationbox.herokuapp.com">Information Box</a>. All rights reserved. </p>
+</div>
